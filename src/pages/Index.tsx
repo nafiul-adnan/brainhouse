@@ -3,79 +3,95 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Code, Users, Briefcase, BookOpen, Mail, Linkedin, Facebook, ArrowRight } from "lucide-react";
+import { Star, Code, Users, Briefcase, BookOpen, Mail, Linkedin, Facebook, ArrowRight, ChevronLeft, Target, Zap } from "lucide-react";
 import ServiceModal from "@/components/ServiceModal";
 import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const services = [
+  const mainCategories = [
+    {
+      id: "development",
+      title: "Software/AI Development",
+      description: "Building cutting-edge software solutions and AI applications",
+      icon: <Code className="w-12 h-12" />,
+      color: "from-blue-600 to-cyan-600"
+    },
+    {
+      id: "interview-prep",
+      title: "Interview Preparation",
+      description: "Expert guidance to ace your technical interviews",
+      icon: <Target className="w-12 h-12" />,
+      color: "from-purple-600 to-pink-600"
+    },
     {
       id: "career-coaching",
-      title: "Software Engineering Career Coaching",
-      description: "Personalized guidance to accelerate your software engineering career",
-      icon: <Users className="w-8 h-8" />,
-      category: "Coaching",
-      features: ["Career roadmap planning", "Skill gap analysis", "Goal setting & tracking"]
-    },
-    {
-      id: "faang-roadmap",
-      title: "FAANG Software Engineer Roadmap",
-      description: "Structured path to land your dream job at top tech companies",
-      icon: <BookOpen className="w-8 h-8" />,
-      category: "Coaching",
-      features: ["Comprehensive study plans", "Resource recommendations", "Timeline optimization"]
-    },
-    {
-      id: "one-on-one-coaching",
-      title: "1:1 Coaching with FAANG/Ex-FAANG Engineers",
-      description: "Direct mentorship from engineers who've been there and done that",
-      icon: <Star className="w-8 h-8" />,
-      category: "Coaching",
-      features: ["Personalized sessions", "Industry insights", "Career strategy"]
-    },
-    {
-      id: "mock-interviews",
-      title: "Mock Interviews - $100/session",
-      description: "Practice with real FAANG engineers and get detailed feedback",
-      icon: <Briefcase className="w-8 h-8" />,
-      category: "Interview Prep",
-      features: ["Technical interviews", "Behavioral rounds", "Detailed feedback report"]
-    },
-    {
-      id: "resume-review",
-      title: "Resume Review & Feedback",
-      description: "Get your resume reviewed by Big-Tech engineers",
-      icon: <Mail className="w-8 h-8" />,
-      category: "Career Services",
-      features: ["ATS optimization", "Technical skills highlighting", "Industry-specific tips"]
-    },
-    {
-      id: "software-development",
-      title: "Software Development",
-      description: "Building AI/Non-AI software solutions for your business",
-      icon: <Code className="w-8 h-8" />,
-      category: "Development",
-      features: ["Full-stack development", "AI integration", "Modern tech stack"]
-    },
-    {
-      id: "mvp-development",
-      title: "MVP Development",
-      description: "Low-cost MVP development by world-class engineers",
-      icon: <ArrowRight className="w-8 h-8" />,
-      category: "Development",
-      features: ["Rapid prototyping", "Cost-effective solutions", "Scalable architecture"]
-    },
-    {
-      id: "backend-development",
-      title: "Backend for AI Apps",
-      description: "Writing robust backends for AI-powered applications",
-      icon: <Code className="w-8 h-8" />,
-      category: "Development",
-      features: ["AI model integration", "API development", "Cloud deployment"]
+      title: "Career Coaching",
+      description: "Personalized mentorship for your tech career journey",
+      icon: <Users className="w-12 h-12" />,
+      color: "from-green-600 to-teal-600"
     }
   ];
+
+  const categoryServices = {
+    development: [
+      {
+        id: "software-development",
+        title: "Custom Software Development",
+        description: "Full-stack development with modern technologies and AI integration",
+        icon: <Code className="w-8 h-8" />,
+        features: ["Full-stack development", "AI integration", "Modern tech stack", "Scalable architecture"]
+      },
+      {
+        id: "mvp-development",
+        title: "MVP Development",
+        description: "Rapid prototyping and low-cost MVP development by world-class engineers",
+        icon: <Zap className="w-8 h-8" />,
+        features: ["Rapid prototyping", "Cost-effective solutions", "World-class engineers", "Quick turnaround"]
+      },
+      {
+        id: "backend-development",
+        title: "AI App Backends",
+        description: "Robust backend systems specifically designed for AI-powered applications",
+        icon: <Code className="w-8 h-8" />,
+        features: ["AI model integration", "API development", "Cloud deployment", "Performance optimization"]
+      }
+    ],
+    "interview-prep": [
+      {
+        id: "mock-interviews",
+        title: "Mock Interviews - $100/session",
+        description: "Practice with real FAANG engineers and receive comprehensive feedback",
+        icon: <Briefcase className="w-8 h-8" />,
+        features: ["Technical interviews", "Behavioral rounds", "Detailed feedback report", "FAANG engineers"]
+      },
+      {
+        id: "resume-review",
+        title: "Resume Review & Optimization",
+        description: "Professional resume review and feedback from Big-Tech engineers",
+        icon: <Mail className="w-8 h-8" />,
+        features: ["ATS optimization", "Technical skills highlighting", "Industry-specific tips", "Big-Tech insights"]
+      }
+    ],
+    "career-coaching": [
+      {
+        id: "career-coaching",
+        title: "1:1 Career Coaching",
+        description: "Personalized guidance from FAANG and ex-FAANG engineers",
+        icon: <Users className="w-8 h-8" />,
+        features: ["Personalized sessions", "Industry insights", "Career strategy", "Goal setting"]
+      },
+      {
+        id: "faang-roadmap",
+        title: "FAANG Career Roadmap",
+        description: "Structured pathway to land your dream job at top tech companies",
+        icon: <BookOpen className="w-8 h-8" />,
+        features: ["Comprehensive study plans", "Resource recommendations", "Timeline optimization", "Success tracking"]
+      }
+    ]
+  };
 
   const testimonials = [
     {
@@ -107,6 +123,14 @@ const Index = () => {
       rating: 5
     }
   ];
+
+  const handleCategorySelect = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+  };
+
+  const handleBackToCategories = () => {
+    setSelectedCategory(null);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -157,44 +181,97 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Our Services</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Comprehensive solutions for your software engineering journey and development needs
+              Choose your path to tech success with our comprehensive service offerings
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <Card key={service.id} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg text-blue-600 group-hover:scale-110 transition-transform">
-                      {service.icon}
+          {!selectedCategory ? (
+            // Main Categories View
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {mainCategories.map((category) => (
+                <Card 
+                  key={category.id} 
+                  className="group hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm cursor-pointer transform hover:scale-105"
+                  onClick={() => handleCategorySelect(category.id)}
+                >
+                  <CardHeader className="text-center pb-4">
+                    <div className={`mx-auto p-6 bg-gradient-to-r ${category.color} rounded-2xl text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      {category.icon}
                     </div>
-                    <Badge variant="secondary">{service.category}</Badge>
-                  </div>
-                  <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
-                  <CardDescription className="text-gray-600">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-center text-sm text-gray-600">
-                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button 
-                    onClick={() => setSelectedService(service.id)}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                  >
-                    Get Started
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                    <CardTitle className="text-2xl mb-3 text-gray-800">{category.title}</CardTitle>
+                    <CardDescription className="text-gray-600 text-base leading-relaxed">
+                      {category.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center pt-0">
+                    <Button 
+                      className="w-full bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black text-white font-medium py-3"
+                    >
+                      Explore Services
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            // Specific Services View
+            <div className="max-w-6xl mx-auto">
+              <div className="flex items-center mb-8">
+                <Button 
+                  variant="ghost" 
+                  onClick={handleBackToCategories}
+                  className="flex items-center text-gray-600 hover:text-gray-800"
+                >
+                  <ChevronLeft className="w-4 h-4 mr-2" />
+                  Back to Categories
+                </Button>
+              </div>
+              
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-bold mb-4">
+                  {mainCategories.find(cat => cat.id === selectedCategory)?.title}
+                </h3>
+                <p className="text-lg text-gray-600">
+                  {mainCategories.find(cat => cat.id === selectedCategory)?.description}
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {categoryServices[selectedCategory as keyof typeof categoryServices]?.map((service) => (
+                  <Card key={service.id} className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="p-3 bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg text-blue-600 group-hover:scale-110 transition-transform">
+                          {service.icon}
+                        </div>
+                      </div>
+                      <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
+                      <CardDescription className="text-gray-600">
+                        {service.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2 mb-6">
+                        {service.features.map((feature, index) => (
+                          <li key={index} className="flex items-center text-sm text-gray-600">
+                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                      <Button 
+                        onClick={() => setSelectedService(service.id)}
+                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                      >
+                        Get Started
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -239,7 +316,7 @@ const Index = () => {
       {selectedService && (
         <ServiceModal 
           serviceId={selectedService}
-          serviceName={services.find(s => s.id === selectedService)?.title || ""}
+          serviceName={categoryServices[selectedCategory as keyof typeof categoryServices]?.find(s => s.id === selectedService)?.title || ""}
           onClose={() => setSelectedService(null)}
         />
       )}
