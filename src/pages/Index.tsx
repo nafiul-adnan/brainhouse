@@ -340,7 +340,7 @@ const Index = () => {
             </a>
           </div>
           <p className="text-gray-600 text-sm">
-            &copy; {new Date().getFullYear()} BrainHouse. All rights reserved.
+            &copy; {new Date().getFullYear()} BrainHouse. All rights reserved | Powered by www.myaicareerguide.com
           </p>
           <p className="text-gray-500 text-xs mt-2">
             Built with ❤️ by the BrainHouse Team
