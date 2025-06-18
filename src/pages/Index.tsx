@@ -57,6 +57,13 @@ const Index = () => {
         description: "Robust backend systems specifically designed for AI-powered applications",
         icon: <Code className="w-8 h-8" />,
         features: ["AI model integration", "API development", "Cloud deployment", "Performance optimization"]
+      },
+      {
+        id: "Vibe-Coding Fixes",
+        title: "Vibe Coding Fixes",
+        description: "Quick fixes for your vibe coded Software issues with a focus on performance and scalability",
+        icon: <Zap className="w-8 h-8" />,
+        features: ["Quick bug fixes", "Performance optimization", "Scalability improvements", "Expert debugging"]
       }
     ],
     "interview-prep": [
@@ -69,7 +76,7 @@ const Index = () => {
       },
       {
         id: "resume-review",
-        title: "Resume Review & Optimization",
+        title: "Resume Review & Optimization - $50",
         description: "Professional resume review and feedback from Big-Tech engineers",
         icon: <Mail className="w-8 h-8" />,
         features: ["ATS optimization", "Technical skills highlighting", "Industry-specific tips", "Big-Tech insights"]
@@ -78,17 +85,24 @@ const Index = () => {
     "career-coaching": [
       {
         id: "career-coaching",
-        title: "1:1 Career Coaching",
+        title: "1:1 Career Coaching - $100/session",
         description: "Personalized guidance from FAANG and ex-FAANG engineers",
         icon: <Users className="w-8 h-8" />,
         features: ["Personalized sessions", "Industry insights", "Career strategy", "Goal setting"]
       },
       {
         id: "faang-roadmap",
-        title: "FAANG Career Roadmap",
+        title: "FAANG Career Roadmap - $200",
         description: "Structured pathway to land your dream job at top tech companies",
         icon: <BookOpen className="w-8 h-8" />,
         features: ["Comprehensive study plans", "Resource recommendations", "Timeline optimization", "Success tracking"]
+      },
+      {
+        id: "interview-training",
+        title: "Interview Training $100/session",
+        description: "In-depth training for technical(Coding, LLD, DSA) and behavioral interviews with expert coaches",
+        icon: <BookOpen className="w-8 h-8" />,
+        features: ["Technical interview prep", "Behavioral interview coaching", "Mock interviews", "Feedback and improvement"]
       }
     ]
   };
@@ -103,7 +117,7 @@ const Index = () => {
     },
     {
       name: "Michael Rodriguez",
-      role: "Senior SDE at Amazon",
+      role: "SDE at Amazon",
       service: "Mock Interviews",
       content: "The mock interviews were incredibly realistic. The feedback I received helped me identify and fix my weak areas before the real interviews.",
       rating: 5
@@ -117,9 +131,9 @@ const Index = () => {
     },
     {
       name: "David Kim",
-      role: "ML Engineer at Meta",
+      role: "ML Engineer",
       service: "Resume Review",
-      content: "The resume review from Big-Tech engineers was eye-opening. Got 3x more interview calls after implementing their suggestions.",
+      content: "The resume review from Big-Tech engineers was eye-opening. I was not getting much interview call and now receiving many more interview calls after implementing their suggestions.",
       rating: 5
     }
   ];
