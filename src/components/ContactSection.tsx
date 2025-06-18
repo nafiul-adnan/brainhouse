@@ -24,7 +24,7 @@ const ContactSection = () => {
               <p className="text-blue-100 mb-4">For business inquiries and service requests</p>
               <Button 
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10"
+                className="bg-white text-blue-600 hover:bg-blue-50"
                 onClick={() => window.location.href = 'mailto:corp.brainhouse@gmail.com'}
               >
                 corp.brainhouse@gmail.com
@@ -41,8 +41,8 @@ const ContactSection = () => {
               <p className="text-blue-100 mb-4">Connect with us professionally</p>
               <Button 
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10"
-                onClick={() => window.open('https://linkedin.com/company/brainhouse', '_blank')}
+                className="bg-white text-blue-600 hover:bg-blue-50"
+                onClick={() => window.open('https://www.linkedin.com/company/brainhousebd', '_blank')}
               >
                 Follow Us
               </Button>
@@ -58,8 +58,8 @@ const ContactSection = () => {
               <p className="text-blue-100 mb-4">Join our community</p>
               <Button 
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10"
-                onClick={() => window.open('https://facebook.com/brainhouse', '_blank')}
+                className="bg-white text-blue-600 hover:bg-blue-50"
+                onClick={() => window.open('https://www.facebook.com/BHBrainHouse', '_blank')}
               >
                 Like Our Page
               </Button>
@@ -85,7 +85,7 @@ const ContactSection = () => {
               <Button 
                 variant="outline"
                 size="lg"
-                className="border-white/30 text-white hover:bg-white/10"
+                className="bg-white text-blue-600 hover:bg-blue-50"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 View All Services

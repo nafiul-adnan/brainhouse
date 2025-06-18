@@ -155,22 +155,15 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-            Elevate Your Tech Career
+            Build Your Career Or Product
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            From FAANG coaching to world-class software development - we're your partner in tech success
+            Whether you're gearing up for high-stakes interviews or diving into world-class software development, we have the expertise to propel your career forward.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg px-8 py-4">
-              Explore Services
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4">
-              Book Consultation
-            </Button>
           </div>
         </div>
       </section>
@@ -184,13 +177,13 @@ const Index = () => {
               Choose your path to tech success with our comprehensive service offerings
             </p>
           </div>
-          
+
           {!selectedCategory ? (
             // Main Categories View
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {mainCategories.map((category) => (
-                <Card 
-                  key={category.id} 
+                <Card
+                  key={category.id}
                   className="group hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm cursor-pointer transform hover:scale-105"
                   onClick={() => handleCategorySelect(category.id)}
                 >
@@ -204,7 +197,7 @@ const Index = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="text-center pt-0">
-                    <Button 
+                    <Button
                       className="w-full bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black text-white font-medium py-3"
                     >
                       Explore Services
@@ -218,8 +211,8 @@ const Index = () => {
             // Specific Services View
             <div className="max-w-6xl mx-auto">
               <div className="flex items-center mb-8">
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   onClick={handleBackToCategories}
                   className="flex items-center text-gray-600 hover:text-gray-800"
                 >
@@ -227,7 +220,7 @@ const Index = () => {
                   Back to Categories
                 </Button>
               </div>
-              
+
               <div className="text-center mb-12">
                 <h3 className="text-3xl font-bold mb-4">
                   {mainCategories.find(cat => cat.id === selectedCategory)?.title}
@@ -260,7 +253,7 @@ const Index = () => {
                           </li>
                         ))}
                       </ul>
-                      <Button 
+                      <Button
                         onClick={() => setSelectedService(service.id)}
                         className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                       >
@@ -282,7 +275,7 @@ const Index = () => {
             <h2 className="text-4xl font-bold mb-4">Client Success Stories</h2>
             <p className="text-xl text-gray-600">See how we've helped others achieve their goals</p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="bg-white/80 backdrop-blur-sm border-0 hover:shadow-lg transition-shadow">
@@ -312,9 +305,52 @@ const Index = () => {
       {/* Contact Section */}
       <ContactSection />
 
+      <footer className="bg-white/80 backdrop-blur-md border-t py-8">
+        <div className="container mx-auto text-center">
+          <div className="mb-4 flex justify-center space-x-4">
+            <a
+              href="https://www.facebook.com/BHBrainHouse"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-blue-600 transition-colors text-sm"
+            >
+              Facebook
+            </a>
+            <a
+              href="https://wa.me/+353871886502"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-green-600 transition-colors text-sm"
+            >
+              WhatsApp: +353871886502
+            </a>
+            <a
+              href="mailto:corp.brainhouse@gmail.com"
+              className="text-gray-600 hover:text-red-600 transition-colors text-sm"
+            >
+              Email
+            </a>
+            <a
+              href="https://www.linkedin.com/company/brainhousebd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-blue-700 transition-colors text-sm"
+            >
+              LinkedIn
+            </a>
+          </div>
+          <p className="text-gray-600 text-sm">
+            &copy; {new Date().getFullYear()} BrainHouse. All rights reserved.
+          </p>
+          <p className="text-gray-500 text-xs mt-2">
+            Built with ❤️ by the BrainHouse Team
+          </p>
+        </div>
+      </footer>
+
       {/* Service Modal */}
       {selectedService && (
-        <ServiceModal 
+        <ServiceModal
           serviceId={selectedService}
           serviceName={categoryServices[selectedCategory as keyof typeof categoryServices]?.find(s => s.id === selectedService)?.title || ""}
           onClose={() => setSelectedService(null)}
